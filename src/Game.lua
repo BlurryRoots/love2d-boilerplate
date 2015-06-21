@@ -42,9 +42,9 @@ end
 
 function Game:handle (event)
 	if not self.handlers[event.__type] then
-		print("could not find handler for " .. event.__type)
+		print("could not find handler for " .. event:get_type ())
 	else
-		self.handlers[event.__type] (event)
+		self.handlers[event:get_type ()] (event)
 	end
 end
 
