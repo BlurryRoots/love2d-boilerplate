@@ -1,7 +1,7 @@
 require ("lib.lclass.init")
 
-class "KeyboardKeyDownEvent"
+class "KeyboardKeyDown"
 
-function KeyboardKeyDownEvent:KeyboardKeyDownEvent (key)
+function KeyboardKeyDown:KeyboardKeyDown (key)
 	self.key = key
 end

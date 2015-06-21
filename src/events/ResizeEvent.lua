@@ -1,8 +1,8 @@
 require ("lib.lclass.init")
 
-class "ResizeEvent"
+class "Resize"
 
-function ResizeEvent:ResizeEvent (w, h)
+function Resize:Resize (w, h)
 	self.width = w
 	self.height = h
 end

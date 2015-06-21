@@ -1,8 +1,8 @@
 require ("lib.lclass.init")
 
-class "MouseButtonDownEvent"
+class "MouseButtonDown"
 
-function MouseButtonDownEvent:MouseButtonDownEvent (x, y, button)
+function MouseButtonDown:MouseButtonDown (x, y, button)
 	self.position = {
 		x = x,
 		y = y

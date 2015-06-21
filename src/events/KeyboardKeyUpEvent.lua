@@ -1,7 +1,7 @@
 require ("lib.lclass.init")
 
-class "KeyboardKeyUpEvent"
+class "KeyboardKeyUp"
 
-function KeyboardKeyUpEvent:KeyboardKeyUpEvent (key)
+function KeyboardKeyUp:KeyboardKeyUp (key)
 	self.key = key
 end

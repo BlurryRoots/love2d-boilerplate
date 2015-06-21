@@ -16,41 +16,45 @@ function Game:Game ()
 	--
 	self.eventManager = EventManager ()
 
-	self.eventManager:subscribe ("FocusGainedEvent", self)
-	self.eventManager:subscribe ("FocusLostEvent", self)
-	self.eventManager:subscribe ("KeyboardKeyDownEvent", self)
-	self.eventManager:subscribe ("KeyboardKeyUpEvent", self)
-	self.eventManager:subscribe ("MouseButtonDownEvent", self)
-	self.eventManager:subscribe ("MouseButtonUpEvent", self)
-	self.eventManager:subscribe ("ResizeEvent", self)
+	self.eventManager:subscribe ("FocusGained", self)
+	self.eventManager:subscribe ("FocusLost", self)
+	self.eventManager:subscribe ("KeyboardKeyDown", self)
+	self.eventManager:subscribe ("KeyboardKeyUp", self)
+	self.eventManager:subscribe ("MouseButtonDown", self)
+	self.eventManager:subscribe ("MouseButtonUp", self)
+	self.eventManager:subscribe ("Resize", self)
+
+	self.handlers = {
+		MouseButtonDown = function (event)
+			self.message = event.button
+		end,
+		MouseButtonUp = function (event)
+			self.message = "keksnase!"
+		end,
+	}
 
 	self.message = "keksnase!"
 end
 
 function Game:raise (event)
-	--
-	print ("trying to raise event " .. event.typeName)
 	self.eventManager:push (event)
 end
 
 function Game:handle (event)
-	--
-	if "MouseButtonDownEvent" == event.typeName then
-		self.message = event.button
-	end
-	if "MouseButtonUpEvent" == event.typeName then
-		self.message = "keksnase!"
+	if not self.handlers[event.__type] then
+		print("could not find handler for " .. event.__type)
+	else
+		self.handlers[event.__type] (event)
 	end
 end
 
-function Game:onUpdate (dt)
-	--
+function Game:on_update (dt)
 	self.eventManager:update (dt)
 end
 
-function Game:onRender ()
+function Game:on_render ()
 	love.graphics.print (self.message, 42, 42)
 end
 
-function Game:onExit ()
+function Game:on_exit ()
 end

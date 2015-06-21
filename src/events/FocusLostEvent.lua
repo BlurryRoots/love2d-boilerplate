@@ -1,6 +1,6 @@
 require ("lib.lclass.init")
 
-class "FocusLostEvent"
+class "FocusLost"
 
-function FocusLostEvent:FocusLostEvent ()
+function FocusLost:FocusLost ()
 end

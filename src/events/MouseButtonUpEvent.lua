@@ -1,8 +1,8 @@
 require ("lib.lclass.init")
 
-class "MouseButtonUpEvent"
+class "MouseButtonUp"
 
-function MouseButtonUpEvent:MouseButtonUpEvent (x, y, button)
+function MouseButtonUp:MouseButtonUp (x, y, button)
 	self.position = {
 		x = x,
 		y = y

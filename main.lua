@@ -1,47 +1,47 @@
 require ("src.Game")
 
-local gameInstance = nil
+local game = nil
 
 function love.load ()
-	gameInstance = Game ()
+	game = Game ()
 end
 
 function love.quit ()
-	gameInstance:onExit ()
+	game:on_exit ()
 end
 
 function love.focus (f)
 	if f then
-		gameInstance:raise (FocusLostEvent ())
+		game:raise (FocusLost ())
 	else
-		gameInstance:raise (FocusGainedEvent ())
+		game:raise (FocusGained ())
 	end
 end
 
 function love.resize (w, h)
-	gameInstance:raise (ResizeEvent (w, h))
+	game:raise (ResizeEvent (w, h))
 end
 
 function love.update (dt)
-	gameInstance:onUpdate (dt)
+	game:on_update (dt)
 end
 
 function love.draw ()
-	gameInstance:onRender ()
+	game:on_render ()
 end
 
 function love.mousepressed (x, y, button)
-	gameInstance:raise (MouseButtonDownEvent (x, y, button))
+	game:raise (MouseButtonDown (x, y, button))
 end
 
 function love.mousereleased (x, y, button)
-	gameInstance:raise (MouseButtonUpEvent (x, y, button))
+	game:raise (MouseButtonUp (x, y, button))
 end
 
 function love.keypressed (key)
-	gameInstance:raise (KeyboardKeyDownEvent (key))
+	game:raise (KeyboardKeyDown (key))
 end
 
 function love.keyreleased (key)
-	gameInstance:raise (KeyboardKeyUpEvent (key))
+	game:raise (KeyboardKeyUp (key))
 end
